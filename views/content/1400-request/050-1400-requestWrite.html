@@ -1,0 +1,137 @@
+<link href="../../styles/main.css" rel="stylesheet">
+<link href="../../styles/wacommon.css" rel="stylesheet">
+<link href="../../styles/masion.css" rel="stylesheet">
+
+<link href="../../styles/introduction.css" rel="stylesheet">
+
+
+<div class="col-xs-12 column line-bottom">
+    <div class="row clearfix">
+        <h3 class="pull-left"> 견적문의 </h3>
+        <ul class="list-unstyled list-inline pull-right pager01">
+            <li>
+                <a> HOME ></a>
+            </li>
+	    <li class="active">
+                견적문의
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+<div class="row clearfix"><br></div>
+
+<div class="row clearfix">
+
+    <div class="col-xs-12 column">
+        <form role="form" id="used" action="/insertboard" method="post">
+            <div class="row clearfix">
+                <div class="col-xs-12 column">
+                    <div class="form-group">
+                        <label class="pull-left" for="usedInputTitle">제목&nbsp;</label>
+
+                        <p class="help-block">(필)</p>
+
+                        <div class="row clearfix"></div>
+                        <input type="text" placeholder="문의사항 제목을 적어주세요" required="required"
+                               class="form-control" name="usedInputTitle" id="usedInputTitle"
+                               autofocus="autofocus"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+
+                <div class="col-xs-6 column myhalf" style="padding-left: 0px;">
+                    <div class="form-group form-inline">
+                        <label class="pull-left" for="usedInputname">작성자&nbsp;</label>
+
+                        <p class="help-block">(필)</p>
+
+                        <div class="row clearfix"></div>
+                        <input type="text" placeholder="작성자 성함을 적어주세요" required="required" id="usedInputname"
+                               class="form-control myhalfinput" name="usedInputname"/>
+                    </div>
+                    <div class="form-group ">
+                        <label class="pull-left" for="usedInputCompany">업체명&nbsp;</label>
+
+                        <p class="help-block">(필)</p>
+
+                        <div class="row clearfix"></div>
+                        <input type="text" placeholder="업체명을 적어주세요" required="required" id="usedInputCompany"
+                               class="form-control myhalfinput" name="usedInputCompany"/>
+                    </div>
+                </div>
+                <div class="col-xs-6 column myhalf" style="padding-right: 0px;">
+                    <div class="form-group">
+                        <label class="pull-left" for="usedInputCall">연락처&nbsp;</label>
+
+                        <p class="help-block">(필)</p>
+
+                        <div class="row clearfix"></div>
+                        <input type="tel" required="required" id="usedInputCall"
+                               placeholder="연락처를 적어주세요. 적어주신 연락처로 연락드리겠습니다"
+                               class="form-control myhalfinput" name="usedInputCall"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="pull-left" for="usedInputEmail">이메일</label>
+
+                        <p class="help-block" style="color: #ffffff"> a </p>
+
+                        <div class="row clearfix"></div>
+                        <input type="email" id="usedInputEmail"
+                               placeholder="등록하시면 매종의 최신 홍보자료를 받으실 수 있습니다"
+                               class="form-control myhalfinput" name="usedInputEmail"/>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row clearfix">
+                <div class="col-xs-12 column">
+                    <div class="form-group">
+                        <label class="pull-left" for="usedInputContent">내용&nbsp;</label>
+
+                        <p class="help-block">(필)</p>
+
+                        <div class="row clearfix"></div>
+                        <textarea rows="10" cols="" class="form-control" name="usedInputContent"
+                                  id="usedInputContent"
+                                  required="required"
+                                  placeholder="문의사항을 적어주세요"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="mywidth">
+                <a><button type="submit" id="insertbtn" class="btn btn-primary pull-right">등 록</button></a><!--onclick="process()"-->
+            </div>
+        </form>
+        <form id="reqList" action="/requestList" method="post">
+                            <span id="listsee">
+                        </span>
+        </form>
+    </div>
+</div>
+
+<script>
+    $('#used').on('submit', function (event) {
+        $('#used').submit();
+    });
+    $('#reqList').on('submit', function (event) {
+        $('#reqList').submit();
+    });
+    var chkout = function () {
+        sessionStorage.setItem('name', '');
+        sessionStorage.setItem('role', '');
+        history.back();
+    };
+    $(document).ready(function () {
+        if (sessionStorage.getItem('role') == null || sessionStorage.getItem('role') == '') {
+
+        } else {
+
+            $('#listsee').append("<button type='submit' class='btn btn-primary pull-right'>리스트보기</button><input type='hidden' name='role' value='" + sessionStorage.getItem('role') + "'>");
+        }
+    });
+</script>
